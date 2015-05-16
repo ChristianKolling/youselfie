@@ -39,7 +39,7 @@ return array(
                     'default' => array(
                         'type' => 'Segment',
                         'options' => array(
-                            'route' => '[:controller[/:action]]',
+                            'route' => '[/:controller[/:action]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -76,7 +76,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Welcome' => 'Application\Controller\WelcomeController',
+            'Home\Controller\Welcome' => 'Home\Controller\WelcomeController',
         ),
     ),
     'view_manager' => array(
@@ -86,7 +86,7 @@ return array(
         'not_found_template' => 'error/404',
         'exception_template' => 'error/index',
         'template_map' => array(
-            //'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
+//            'layout/layout' => __DIR__ . '../layout/layout.phtml',
             'home/index/index' => __DIR__ . '/../view/home/index/index.phtml',
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
