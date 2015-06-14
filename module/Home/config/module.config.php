@@ -72,12 +72,14 @@ return array(
         ),
         'invokables' => array(
             'Home\Service\Post' => 'Home\Service\Post',
+            'Home\Service\Album' => 'Home\Service\Album',
         ),
     ),
     'controllers' => array(
         'invokables' => array(
             'Home\Controller\Welcome' => 'Home\Controller\WelcomeController',
             'Home\Controller\Config' => 'Home\Controller\ConfigController',
+            'Home\Controller\Album' => 'Home\Controller\AlbumController',
         ),
     ),
     'view_manager' => array(

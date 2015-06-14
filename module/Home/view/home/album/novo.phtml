@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row profile">
+        
+        <div class="col-md-3">
+            <div class="profile-sidebar">
+                <div class="profile-userpic">
+                    <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+                </div>
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        Marcus Doe
+                    </div>
+                    <div class="profile-usertitle-job">
+                        Developer
+                    </div>
+                </div>
+
+                <div class="profile-userbuttons">
+                    <button type="button" class="btn btn-success btn-sm">Perfil</button>
+                    <a href="/home/config/index"><button type="button" class="btn btn-danger btn-sm">Configurações</button></a>
+                </div>
+                
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-home"></i>
+                                Linha do Tempo </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-comment"></i>
+                                Mensagens</a>
+                        </li>
+                        <li class="active">
+                            <a href="/home/album/index">
+                                <i class="glyphicon glyphicon-camera"></i>
+                                Fotos </a>
+                        </li>
+                        <li>
+                            <a href="/home/amigos/index">
+                                <i class="glyphicon glyphicon-user"></i>
+                                Amigos </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="col-md-12">
+            <?php echo $this->form()->openTag($form); ?>
+                <div class="col-md-9 form-group">
+                    <?php echo $this->formRow($form->get('nome-album')); ?>
+                </div>
+                <div class="col-md-3 form-group">
+                    <?php echo $this->formRow($form->get('data-criacao')); ?>
+                </div>
+                <div class="col-md-12 form-group">
+                    <?php echo $this->formRow($form->get('descricao-album')); ?>
+                </div>
+                <div class="col-md-4 form-group">
+                    <?php echo $this->formRow($form->get('criar-album')); ?>
+                </div>
+            <?php echo $this->form()->closeTag(); ?>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="profile-content">
+
+            </div>
+        </div>
+
+    </div>
+</div>

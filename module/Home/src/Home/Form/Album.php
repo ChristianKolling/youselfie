@@ -14,8 +14,8 @@ class Album extends Form
     {
         parent::__construct('album');
         $this->setAttribute('method', 'post');
-        $this->setAttribute('action', '/home/welcome/upload-album');
-        $this->setAttribute('enctype', 'multipart/form-data');
+        $this->setAttribute('action', '');
+//        $this->setAttribute('enctype', 'multipart/form-data');
         
         $this->add(array(
             'name' => 'nome-album',
@@ -27,6 +27,20 @@ class Album extends Form
                 'id' => 'nome-album',
                 'class' => 'form-control',
                 'placeholder' => 'Nome do seu Álbum'
+            ),
+        ));
+
+        $this->add(array(
+            'name' => 'data-criacao',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Data de Criação',
+            ),
+            'attributes' => array(
+                'id' => 'data-criacao',
+                'class' => 'form-control',
+                'readonly' => true,
+                'value' => date('d-m-Y')
             ),
         ));
 
@@ -43,24 +57,33 @@ class Album extends Form
             ),
         ));
 
+//        $this->add(array(
+//            'type' => 'file',
+//            'name' => 'foto',
+//            'label' => ' ',
+//            'attributes' => array(
+//                'multiple' => true,
+//            ),
+//            'options' => array(
+//                'input' => array(
+//                    'validators' => array(
+//                        array(
+//                            'name' => 'filesize',
+//                            'options' => array(
+//                                'max' => '15MB',
+//                            ),
+//                        ),
+//                    ),
+//                ),
+//            ),
+//        ));
+        
         $this->add(array(
-            'type' => 'file',
-            'name' => 'foto',
-            'label' => ' ',
+            'name' => 'criar-album',
+            'type' => 'Submit',
             'attributes' => array(
-                'multiple' => true,
-            ),
-            'options' => array(
-                'input' => array(
-                    'validators' => array(
-                        array(
-                            'name' => 'filesize',
-                            'options' => array(
-                                'max' => '15MB',
-                            ),
-                        ),
-                    ),
-                ),
+                'value' => 'Criar Álbum',
+                'class' => 'btn btn-primary btn-block btn-lg',
             ),
         ));
     }

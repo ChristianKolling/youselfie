@@ -37,17 +37,12 @@
                                 Mensagens</a>
                         </li>
                         <li>
-                            <a href="#" target="_blank">
+                            <a href="/home/album/index">
                                 <i class="glyphicon glyphicon-camera"></i>
                                 Fotos </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-facetime-video"></i>
-                                Vídeos </a>
-                        </li>
-                        <li>
-                            <a href="#">
+                            <a href="/home/amigos/index">
                                 <i class="glyphicon glyphicon-user"></i>
                                 Amigos </a>
                         </li>
@@ -63,13 +58,6 @@
                     <div class="status-upload">
                         <?php echo $this->form()->openTag($form); ?>
                         <?php echo $this->formRow($form->get('publicacao')); ?>
-                        <ul>
-                            <li>
-                                <a title="Novo Album" data-toggle="modal" data-target="#exampleModal" data-toggle="modal" data-placement="bottom" data-original-title="Foto"><i class="glyphicon glyphicon-camera"></i>
-                                </a>
-                            </li>
-                        </ul>
-
                         <button type="submit" class="btn btn-success green"><i class="glyphicon glyphicon-share-alt"></i> Publicar</button>
                         <?php echo $this->form()->closeTag(); ?>
                     </div>
@@ -121,33 +109,3 @@
 
     </div>
 </div>
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<?php echo $this->form()->openTag($album); ?>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Novo Álbum</h4>
-            </div>
-            <?php echo $this->form()->openTag($album); ?>
-            <div class="modal-body">
-                    <div class="form-group">
-                        <?php echo $this->formRow($album->get('nome-album')); ?>
-                        <?php echo $this->formRow($album->get('descricao-album')); ?>
-                        <div style="margin-top: 5px;">
-                        <?php echo $this->formRow($album->get('foto')); ?>
-                        </div>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success green"><i class="glyphicon glyphicon-share-alt"></i> Publicar</button>
-            </div>
-            <?php echo $this->form()->closeTag($album); ?>
-        </div>
-    </div>
-</div>
-<script>
-    $('input[type=file]').bootstrapFileInput();
-</script>

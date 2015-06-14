@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row profile">
+
+        <div class="col-md-3">
+            <div class="profile-sidebar">
+                <div class="profile-userpic">
+                    <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+                </div>
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        Marcus Doe
+                    </div>
+                    <div class="profile-usertitle-job">
+                        Developer
+                    </div>
+                </div>
+
+                <div class="profile-userbuttons">
+                    <button type="button" class="btn btn-success btn-sm">Perfil</button>
+                    <a href="/home/config/index"><button type="button" class="btn btn-danger btn-sm">Configurações</button></a>
+                </div>
+
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-home"></i>
+                                Linha do Tempo </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-comment"></i>
+                                Mensagens</a>
+                        </li>
+                        <li class="active">
+                            <a href="/home/album/index">
+                                <i class="glyphicon glyphicon-camera"></i>
+                                Fotos </a>
+                        </li>
+                        <li>
+                            <a href="/home/amigos/index">
+                                <i class="glyphicon glyphicon-user"></i>
+                                Amigos </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="col-md-12">
+                <div class="thumbnails">
+                    <div class="col-md-12">
+                        <a class="btn icon-btn btn-success" href="/home/album/novo">
+                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span> Adicionar novo Álbum
+                        </a>
+                    </div>
+                    <?php foreach ($dados as $album): ?>
+                        <div class="col-md-6" style="margin-top: 5px;">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/320x200" alt="ALT NAME">
+                                <div class="caption">
+                                    <h3 class="text-center"><?php echo $album['nome']; ?></h3>
+                                    <p class="text-center"><?php echo $album['descricao']; ?></p>
+                                    <a href="<?php echo '/home/album/visualizar/'.$album['id'];?>" class="btn btn-primary btn-block">Abrir</a>
+                                    <a href="<?php echo '/home/album/novo/'.$album['id'];?>" class="btn btn-info btn-block">Editar</a>
+                                    <a href="<?php echo '/home/album/excluir/'.$album['id'];?>" class="btn btn-danger btn-block">Excluir</a>
+                                    <h5 class="text-success text-center">Álbum publicado em <?php echo $album['data_criacao']->format('d-m-Y H:m'); ?></h5>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="profile-content">
+
+            </div>
+        </div>
+
+    </div>
+</div>
