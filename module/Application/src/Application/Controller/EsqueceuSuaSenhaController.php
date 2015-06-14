@@ -33,7 +33,6 @@ class EsqueceuSuaSenhaController extends ActionController
                             $this->getService('Core\Service\EmailSender')->sendEmailRecoverPassword($senha,$usuario);
                             $this->flashMessenger()->addSuccessMessage('Um e-mail foi enviado para '.$usuario->getEmail().', contendo os novas informações para o login.');
                         } catch (\Exception $e) {
-                            var_dump($e->getMessage());exit;
                             $this->flashMessenger()->addErrorMessage('Erro ao enviar dados por e-mail, por favor tente mais tarde.');
                         }
                     }
