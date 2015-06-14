@@ -49,6 +49,7 @@ return array(
         ),
         'invokables' => array(
             'Core\Service\EmailSender' => 'Core\Service\EmailSender',
+            'Core\Service\Upload' => 'Core\Service\Upload',
         ),
     ),
     'controllers' => array(

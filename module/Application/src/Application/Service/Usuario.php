@@ -30,8 +30,31 @@ class Usuario extends Service
         $this->getObjectManager()->persist($usuario);
         try {
             $this->getObjectManager()->flush();
-        } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+        } catch (\Exception $exc) {
+            throw new Exception('Erro ao salvar Usuário, tente mais tarde.');
         }
+    }
+    
+    public function authenticate($params)
+    {
+        if (!isset($params['email']) || !isset($params['senha'])) {
+            throw new \Exception("Parâmetros inválidos");
+        }
+        $senha = md5($params['senha']);
+        $authService = $this->getServiceManager()->get('Zend\Authentication\AuthenticationService');
+        $authAdapter = $authService->getAdapter();
+        $authAdapter->setIdentityValue($params['email'])
+                ->setCredentialValue($senha);
+        $result = $authService->authenticate();
+
+        if (!$result->isValid()) {
+            throw new \Exception("Login ou senha inválidos");
+        }
+
+        $session = $this->getServiceManager()->get('Session');
+        $identity = $result->getIdentity();
+        $session->offsetSet('user', $identity);
+        $session->offsetSet('role', $identity->getRole());
+        return true;
     }
 }

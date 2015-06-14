@@ -17,6 +17,10 @@ class IndexController extends ActionController
     {
         $form = new Form();
         $loginValidator = new loginValidator();
+        $session = $this->getServiceLocator()->get('Session');
+        if ($session->offsetGet('role') == 'usuario') {
+            return $this->redirect()->toUrl('/home/welcome/home');
+        }
         $request = $this->getRequest();
         if($request->isPost()){
             $form->setInputFilter($loginValidator->getInputFilter());
@@ -30,9 +34,18 @@ class IndexController extends ActionController
                             'confirmarsenha' => md5($dados['senha']),
                         ));
                 if ($usuario) {
-                    $session = $this->getService('Session');
-                    $session->offsetSet('Usuario', $usuario);
-                    return $this->redirect()->toUrl('/home/welcome/home');
+                    try {
+                        $this->getService('Application\Service\Usuario')->authenticate($dados);
+                        if ($session->offsetGet('role') == 'usuario'){
+                            return $this->redirect()->toUrl('/home/welcome/home');
+                        }
+                        else{
+                            return $this->redirect()->toUrl('/');
+                        }
+                    } catch (\Exception $e) {
+                        $this->flashMessenger()->addErrorMessage($e->getMessage());
+                    }
+                    return $this->redirect()->toUrl('/');
                 } else {
                     $this->flashMessenger()->addErrorMessage('Não conseguimos localizar sua conta, por favor tente novamente.');
                     return $this->redirect()->toUrl('/');

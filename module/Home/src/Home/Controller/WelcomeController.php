@@ -5,6 +5,7 @@ namespace Home\Controller;
 use Core\Controller\ActionController;
 use Zend\View\Model\ViewModel;
 use Home\Form\Post as PostForm;
+use Home\Form\Album as AlbumForm;
 use Home\Validator\Post as PostValidator;
 
 /**
@@ -15,24 +16,30 @@ class WelcomeController extends ActionController
 {
     public function homeAction()
     {
+        $this->layout('layout/home.phtml');
         $form = new PostForm();
+        $albumForm = new AlbumForm();
         $postValidator = new PostValidator();
-        $request = $this->getRequest();
-        if ($request->isPost()) {
+        if ($this->getRequest()->isPost()) {
             $form->setInputFilter($postValidator->getInputFilter());
-            $form->setData($request->getPost());
+            $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
-                $dados = $form->getData();            
+                $dados = $form->getData();
                 $this->getService('Home\Service\Post')->savePost($dados);
             }
         }
         return new ViewModel(array(
-            'form' => $form
+            'form' => $form,
+            'album' => $albumForm
         ));
     }
-
-    public function novoPostAction() {
-        $form = new PostForm();
+    
+    public function uploadAlbumAction() 
+     {
+        if ($this->getRequest()->isPost()) {
+            $files = $this->getRequest()->getFiles('foto');
+            $this->getService('Core\Service\Upload')->uploadPhoto($files);
+        }
     }
 
 }

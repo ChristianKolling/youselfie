@@ -88,6 +88,12 @@ class Usuario
      */
     protected $status;    
     
+   /**
+     * @ORM\Column(type="string", length=30)
+     * 
+     */
+    protected $role;
+    
     function getDataCadastro() {
         return $this->dataCadastro;
     }
@@ -180,4 +186,13 @@ class Usuario
         $this->status = $status;
     }
         
+    function getRole() {
+        return $this->role;
+    }
+
+    function setRole($role) {
+        $this->role = $role;
+    }
+
+
 }

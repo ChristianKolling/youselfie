@@ -25,7 +25,7 @@ class Post
                         'validators' => array(
                             array(
                                 'name' => 'NotEmpty',
-                                'options' => array('message' => 'Diga a seus amigos...')
+                                'options' => array('message' => 'Diga algo a seus amigos...')
                             ),
                         ),
             )));

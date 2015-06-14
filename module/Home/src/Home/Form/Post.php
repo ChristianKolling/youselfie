@@ -30,15 +30,6 @@ class Post extends Form
             ),
         ));
         
-        $this->add(array(
-            'name' => 'publicar',
-            'type' => 'Submit',
-            'attributes' => array(
-                'value' => 'Publicar',
-                'class' => 'btn btn-success green',
-            ),
-        ));
-        
     }
     
 }

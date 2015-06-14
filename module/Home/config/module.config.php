@@ -71,12 +71,13 @@ return array(
             },
         ),
         'invokables' => array(
-            
+            'Home\Service\Post' => 'Home\Service\Post',
         ),
     ),
     'controllers' => array(
         'invokables' => array(
             'Home\Controller\Welcome' => 'Home\Controller\WelcomeController',
+            'Home\Controller\Config' => 'Home\Controller\ConfigController',
         ),
     ),
     'view_manager' => array(
