@@ -7,11 +7,12 @@ use Home\Model\Album as novoAlbum;
 
 class Album extends Service
 {
-    public function fetchAll()
+    public function fetchAll($id)
     {
         $sql = $this->getObjectManager()->createQueryBuilder()
                 ->select('Album.id,Album.nome,Album.descricao,Album.data_criacao')
-                ->from('Home\Model\Album','Album');
+                ->from('Home\Model\Album','Album')
+                ->where('Album.id = '.$id.'');
         return $sql->getQuery()->getResult();
     }
 

@@ -56,27 +56,6 @@ class Album extends Form
                 'placeholder' => 'Descrição do seu Álbum'
             ),
         ));
-
-//        $this->add(array(
-//            'type' => 'file',
-//            'name' => 'foto',
-//            'label' => ' ',
-//            'attributes' => array(
-//                'multiple' => true,
-//            ),
-//            'options' => array(
-//                'input' => array(
-//                    'validators' => array(
-//                        array(
-//                            'name' => 'filesize',
-//                            'options' => array(
-//                                'max' => '15MB',
-//                            ),
-//                        ),
-//                    ),
-//                ),
-//            ),
-//        ));
         
         $this->add(array(
             'name' => 'criar-album',

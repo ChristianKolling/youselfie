@@ -6,7 +6,7 @@ use Core\Controller\ActionController;
 use Zend\View\Model\ViewModel;
 use Home\Form\Album as Form;
 use Home\Validator\Album as AlbumValidator;
-
+use Home\Form\Foto as FormFoto;
 class AlbumController extends ActionController
 {
     public function indexAction()
@@ -20,6 +20,7 @@ class AlbumController extends ActionController
     
     public function novoAction()
     {
+        $this->layout('layout/home.phtml');
         $form = new Form();
         $albumValidator = new AlbumValidator();
         if($this->getRequest()->isPost()){
@@ -37,6 +38,18 @@ class AlbumController extends ActionController
         }
         return new ViewModel(array(
             'form' => $form
+        ));
+    }
+    
+    public function visualizarAction()
+    {
+        $formFoto = new FormFoto();
+        $this->layout('layout/home.phtml');
+        $id = $this->params()->fromRoute('id',0);
+        $result = $this->getService('Home\Service\Album')->fetchAll($id);
+        return new ViewModel(array(
+            'dados' => $result,
+            'form' => $formFoto
         ));
     }
 }
